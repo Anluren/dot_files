@@ -77,3 +77,8 @@ function ast_dump
     `sed -r -n --expression='s/\s+"command":\s+"([^"]+) -o [^ ]+ -c ([^ ]+'$1')",/clang-check -ast-dump \2 -- \1 -c /p' compile_commands.json`
 }
 
+function ast_print 
+{
+    `sed -r -n --expression='s/\s+"command":\s+"([^"]+) -o [^ ]+ -c ([^ ]+'$1')",/clang-check -ast-print \2 -- \1 -c /p' compile_commands.json`
+}
+
