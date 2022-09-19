@@ -71,3 +71,9 @@ function dump_layout {
 function compile_options {
     sed -r -n --expression='s/\s+"command":\s+"([^"]+) -o [^ ]+ -c ([^ ]+'$1')",/\1 -c /p' compile_commands.json
 }
+
+function ast_dump 
+{
+    `sed -r -n --expression='s/\s+"command":\s+"([^"]+) -o [^ ]+ -c ([^ ]+'$1')",/clang-check -ast-dump \2 -- \1 -c /p' compile_commands.json`
+}
+
