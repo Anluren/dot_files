@@ -68,3 +68,6 @@ function dump_layout {
 	`sed -n -r -e'/.*command.*'$1'.*/s/(.*) -g(.*)/\1\2/gp' compile_commands.json | sed -n -r -e 's/"command": "([^ ]+)(.*)(-o +[^ ]+)(.*)(-c ([^ ]+))",/\1 -cc1 -fdump-record-layouts \6 \2 \4 /gp'`
 }
 
+function compile_options {
+    sed -r -n --expression='s/\s+"command":\s+"([^"]+) -o [^ ]+ -c ([^ ]+'$1')",/\1 -c /p' compile_commands.json
+}
