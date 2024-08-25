@@ -82,3 +82,4 @@ function ast_print
     `sed -r -n --expression='s/\s+"command":\s+"([^"]+) -o [^ ]+ -c ([^ ]+'$1')",/clang-check -ast-print \2 -- \1 -c /p' compile_commands.json`
 }
 
+alias clang_include='clang++ -E -x c++ - -v < /dev/null 2>&1 | sed "/#include <...> search starts here:/,/End of search list./!d;//d"'
