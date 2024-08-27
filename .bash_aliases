@@ -83,3 +83,5 @@ function ast_print
 }
 
 alias clang_include='clang++ -E -x c++ - -v < /dev/null 2>&1 | sed "/#include <...> search starts here:/,/End of search list./!d;//d"'
+
+alias wtop="cd `pwd | sed -r -n 's/((\/[^\/]+){4}).*/\1/p'`"
